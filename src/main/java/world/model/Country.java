@@ -22,7 +22,18 @@ public class Country {
     @JoinColumn (name="Capital")
     private City capital;
 
+    @OneToMany (mappedBy = "country", fetch = FetchType.LAZY)
+    private List<City> cities;
+
     public Country() {}
+
+    public List<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
 
     public City getCapital() {
         return capital;
