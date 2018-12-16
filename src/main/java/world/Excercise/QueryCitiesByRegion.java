@@ -7,16 +7,16 @@ import org.hibernate.query.Query;
 import world.model.City;
 import world.model.Country;
 
-public class QueryAllCountriesAndCodes {
+public class QueryCitiesByRegion {
+
 
 
     public static void main(String[] args) {
         try(SessionFactory factory = new Configuration().configure().buildSessionFactory();
             Session sess = factory.openSession()) {
-            Query<Country> q = sess.createQuery("SELECT c FROM Country c");
+            Query<City> q = sess.createQuery("SELECT c FROM City c WHERE District='Zuid-Holland'");
             q.stream().forEach(
-                    country -> System.out.println(country.getName() + " " + country.getCode()));
+                    city -> System.out.println(city.getName() + " " + city.getId() + " " + city.getDistrict() + " " + city.getCountry().getName()));
         }
     }
-
 }
