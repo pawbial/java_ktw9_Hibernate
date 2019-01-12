@@ -25,6 +25,10 @@ public class Country {
     @OneToMany (mappedBy = "country", fetch = FetchType.LAZY)
     private List<City> cities;
 
+
+    @OneToMany (mappedBy = "country", fetch = FetchType.LAZY)
+    private List<CountryLanguage> languages;
+
     public Country() {}
 
     public List<City> getCities() {
@@ -67,4 +71,5 @@ public class Country {
         this.code2 = code2;
     }
 
+    public List<CountryLanguage> getLanguages() { return languages; }
 }
